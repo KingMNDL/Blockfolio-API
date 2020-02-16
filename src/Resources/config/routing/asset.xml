@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing
+        http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="app.asset.get.all"
+           path="assets/all"
+           methods="get"
+           controller="App\Controller\Asset\AssetController::getAssets">
+    </route>
+
+    <route id="app.asset.get.single"
+           path="assets/get/{id}"
+           methods="get"
+           controller="App\Controller\Asset\AssetController::getAsset">
+    </route>
+
+    <route id="app.asset.create"
+           path="assets/create"
+           methods="post"
+           controller="App\Controller\Asset\AssetController::createAsset">
+        <default key="_validate">Create</default>
+    </route>
+
+    <route id="app.asset.update"
+           path="assets/update/{id}"
+           methods="put"
+           controller="App\Controller\Asset\AssetController::updateAsset">
+        <default key="_validate">Update</default>
+    </route>
+
+    <route id="app.asset.delete"
+           path="assets/delete/{id}"
+           methods="delete"
+           controller="App\Controller\Asset\AssetController::deleteAsset">
+    </route>
+
+    <route id="app.asset.value.get.all"
+           path="assets/all/value"
+           methods="get"
+           controller="App\Controller\Asset\AssetController::getAssetsValue">
+    </route>
+
+    <route id="app.asset.value.get.single"
+           path="assets/get/{id}/value"
+           methods="get"
+           controller="App\Controller\Asset\AssetController::getAssetValue">
+    </route>
+</routes>

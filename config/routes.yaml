@@ -1,0 +1,11 @@
+api_auth_login:
+    path: /api/auth/login
+    methods:  [POST]
+
+auth:
+    prefix: 'api'
+    resource: '../../src/Resources/config/routing/auth.xml'
+
+asset:
+    prefix: 'api'
+    resource: '../../src/Resources/config/routing/asset.xml'

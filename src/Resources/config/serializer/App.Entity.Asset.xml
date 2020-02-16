@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="App\Entity\Asset">
+
+        <property name="id"
+                  type="integer"
+                  groups="Get"/>
+
+        <property name="label"
+                  type="string"
+                  groups="Get,Create,Update"/>
+
+        <property name="value"
+                  type="float"
+                  groups="Get,Create,Update"/>
+
+        <property name="currency"
+                  type="string"
+                  groups="Get,Create,Update"/>
+
+        <property name="user" exclude="true"/>
+    </class>
+</serializer>

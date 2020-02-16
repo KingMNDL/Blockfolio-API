@@ -1,0 +1,66 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'en'
+    coingecko_base: 'https://api.coingecko.com'
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{Entity,Migrations,Tests,Kernel.php}'
+
+    App\Controller\:
+        resource: ../src/Controller
+        tags:
+            - controller.service_arguments
+
+    App\Repository\:
+        resource: ../src/Repository
+        public: true
+
+    App\Service\ParamConverter\JsonConverterAndValidator:
+        arguments:
+            $requestBodyParamConverter: '@fos_rest.converter.request_body'
+        tags:
+            - {name: request.param_converter, converter: json_converter_validator}
+        public: true
+
+    CoinGeckoGuzzleInstance:
+        class: GuzzleHttp\Client
+        arguments:
+            - { base_uri: '%coingecko_base%' }
+            - { timeout: 1 }
+            - { allow_redirects: false }
+
+    App\Service\CoinGecko\ApiClient:
+        class: App\Service\CoinGecko\ApiClient
+        arguments:
+            - '@CoinGeckoGuzzleInstance'
+
+# FOS user config
+fos_user:
+    db_driver:      orm
+    firewall_name:  main
+    user_class:     App\Entity\User
+    from_email:
+        address: "no-reply@joeymasip.com"
+        sender_name: "Joey"
+    registration:
+        confirmation:
+            enabled: true
+            template:   FOSUserBundle:Registration:email.txt.twig
+            from_email:
+                address:        "no-reply@joeymasip.com"
+                sender_name:    "No Reply Registration"
+    service:
+        mailer: fos_user.mailer.twig_swift
+    resetting:
+        email:
+            template:   FOSUserBundle:Resetting:email.txt.twig

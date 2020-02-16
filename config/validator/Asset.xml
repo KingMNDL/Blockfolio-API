@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                    http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="App\Entity\Asset">
+
+        <property name="label">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Create</value>
+                    <value>Update</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="value">
+            <constraint name="GreaterThan">
+                <option name="value">0</option>
+                <option name="groups">
+                    <value>Create</value>
+                    <value>Update</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="currency">
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>BTC</value>
+                    <value>ETH</value>
+                    <value>IOTA</value>
+                    <value>btc</value>
+                    <value>eth</value>
+                    <value>iota</value>
+                </option>
+                <option name="groups">
+                    <value>Create</value>
+                    <value>Update</value>
+                </option>
+            </constraint>
+        </property>
+
+    </class>
+</constraint-mapping>

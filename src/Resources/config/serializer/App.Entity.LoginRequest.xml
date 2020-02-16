@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<serializer>
+    <class name="App\Entity\LoginRequest">
+
+        <property name="username"
+                  type="string"
+                  groups="Get, Create"/>
+
+        <property name="password"
+                  type="string"
+                  groups="Get, Create"/>
+    </class>
+</serializer>
