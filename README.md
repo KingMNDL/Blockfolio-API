@@ -31,7 +31,7 @@ Setup database and create test admin user (for testing/development purposes auto
 $ bash install-clean.sh
 ```
 
-While running this script you will be prompted to enter JWT passphrase. Use the one defined in dot even file. (for eg usermanagementjwt)
+While running this script you will be prompted to enter JWT passphrase. Use the one defined in dot even file. (for eg blockfoliojwt)
 
 After that You are done! You can visit Nelmio Api Doc bundle to read docs or use API: `http://localhost:8000/api/doc` 
 
