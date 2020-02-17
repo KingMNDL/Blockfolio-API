@@ -14,5 +14,4 @@ default:
                 class: App\Kernel
                 env: "test"
                 debug: "false"
-        Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
 
