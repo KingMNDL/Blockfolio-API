@@ -1,0 +1,3 @@
+lexik_jwt_authentication:
+  public_key:  '%kernel.project_dir%/%env(JWT_PUBLIC_KEY_PATH)%'
+  user_identity_field: "username"

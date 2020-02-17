@@ -111,7 +111,7 @@ class AssetController extends AbstractFOSRestController
     {
         $this->throwExceptionIfAssetDoesntBelong($asset);
 
-        return $this->view($asset, Response::HTTP_CREATED);
+        return $this->view($asset, Response::HTTP_OK);
     }
 
     /**
