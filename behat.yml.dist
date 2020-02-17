@@ -4,9 +4,15 @@ default:
             contexts:
               - RestApiContext:
                   kernel: '@kernel'
+                  userManager: "@fos_user.user_manager"
+                  entityManager: '@doctrine.orm.entity_manager'
 
     extensions:
         Behat\Symfony2Extension:
             kernel:
                 bootstrap: features/bootstrap/bootstrap.php
                 class: App\Kernel
+                env: "test"
+                debug: "false"
+        Liuggio\Fastest\Behat\ListFeaturesExtension\Extension: ~
+
